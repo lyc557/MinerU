@@ -1027,7 +1027,7 @@ async def _parse_file_local(
     file_type = file_path_obj.suffix.lower()
     form_data = aiohttp.FormData()
     form_data.add_field(
-        "file", file_data, filename=file_path_obj.name, content_type=file_type
+        "files", file_data, filename=file_path_obj.name, content_type=file_type
     )
     form_data.add_field("parse_method", parse_method)
 
