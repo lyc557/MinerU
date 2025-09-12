@@ -18,6 +18,7 @@ from starlette.routing import Mount, Route
 from . import config
 from .api import MinerUClient
 from .language import get_language_list
+from .file_utils import download_file_from_url
 
 # 初始化 FastMCP 服务器
 mcp = FastMCP(
@@ -779,12 +780,11 @@ async def parse_documents(
 
     # 根据USE_LOCAL_API决定处理方式
     if config.USE_LOCAL_API:
-        # 在本地API模式下，只处理本地文件路径
-        if not file_paths:
-            return {
-                "status": "warning",
-                "message": "在本地API模式下，无法处理URL，且未提供有效的本地文件路径",
-            }
+
+        if url_paths:
+            for url in url_paths:
+                download_path = download_file_from_url(url)
+                file_paths.append(download_path)
 
         config.logger.info(f"使用本地API处理 {len(file_paths)} 个文件")
 
