@@ -732,16 +732,7 @@ async def parse_documents(
     ] = None,
 ) -> Dict[str, Any]:
     """
-    统一接口，将文件转换为Markdown格式。支持本地文件和URL，会根据USE_LOCAL_API配置自动选择合适的处理方式。
-
-    当USE_LOCAL_API=true时:
-    - 会过滤掉http/https开头的URL路径
-    - 对本地文件使用本地API进行解析
-
-    当USE_LOCAL_API=false时:
-    - 将http/https开头的路径使用convert_file_url处理
-    - 将其他路径使用convert_file_path处理
-
+    统一接口，将文件转换为Markdown格式。支持本地文件和URL
     处理完成后，会自动尝试读取转换后的文件内容并返回。
 
     返回:
