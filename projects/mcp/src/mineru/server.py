@@ -98,8 +98,8 @@ def run_server(mode=None, port=8001, host="127.0.0.1"):
             uvicorn.run(starlette_app, host=host, port=port)
         elif mode == "streamable-http":
             config.logger.info(f"启动Streamable HTTP服务器: {host}:{port}")
-            # 在HTTP模式下传递端口参数
-            mcp.run(mode, port=port)
+            # 在HTTP模式下传递端口和主机参数
+            mcp.run(mode, port=port, host=host)
         else:
             # 默认stdio模式
             config.logger.info("启动STDIO服务器")
