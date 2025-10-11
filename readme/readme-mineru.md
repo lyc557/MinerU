@@ -15,5 +15,4 @@ mineru-api --host 0.0.0.0 --port 8100
 cd  projects/mcp      
 uv venv
 source .venv/bin/activate
-uv run mineru-mcp --transport streamable-http --port 8101
-
+uv run mineru-mcp --transport streamable-http --port 8101 --host 0.0.0.0
