@@ -1025,9 +1025,15 @@ async def _parse_file_local(
     config.logger.debug(f"发送本地API请求到: {api_url}")
     config.logger.debug(f"上传文件: {file_path_obj.name} (大小: {len(file_data)} 字节)")
 
+    # 构造超时（连接/读取/总时间由配置控制）
+    timeout = aiohttp.ClientTimeout(
+        total=3600,
+        connect=60,
+        sock_read=10,
+    )
     # 发送请求
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.post(api_url, data=form_data) as response:
                 if response.status != 200:
                     error_text = await response.text()
