@@ -1029,7 +1029,7 @@ async def _parse_file_local(
     timeout = aiohttp.ClientTimeout(
         total=3600,
         connect=60,
-        sock_read=10,
+        sock_read=60,
     )
     # 发送请求
     try:
