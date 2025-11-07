@@ -1027,9 +1027,9 @@ async def _parse_file_local(
 
     # 构造超时（连接/读取/总时间由配置控制）
     timeout = aiohttp.ClientTimeout(
-        total=3600,
-        connect=60,
-        sock_read=60,
+        total=3600,        
+        connect=60,        # 连接阶段超时保持不变
+        sock_read=1800,    # 读取阶段超时提高到30分钟
     )
     # 发送请求
     try:
