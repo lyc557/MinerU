@@ -11,7 +11,7 @@ uv venv
 uv pip install -e '.[core]' -i https://mirrors.aliyun.com/pypi/simple
 
 # 模型测试
-mineru -p /Users/yangcailu/chengtay_code/markdown/pdf/1.pdf -o /Users/yangcailu/chengtay_code/markdown/output
+mineru -p /home/luyangcai/code/MinerU/demo/pdfs/demo1.pdf -o /home/luyangcai/code/MinerU/demo/output
 # 第一次下载的时候，需要下载model，故需通过 modelscope启动
 export MINERU_MODEL_SOURCE=modelscope
 # 后续启动可以通过 local 启动
